@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script type="text/javascript">
+    // Перенаправляет на корневой файл index.html, чтобы CMS могла загрузиться
+    window.onload = function() {
+      if (window.location.pathname.startsWith('/uliana-english.com/admin/')) {
+        window.location.href = '/uliana-english.com/admin/';
+      } else {
+        // Если это не админка, просто возвращаемся на главную
+        window.location.href = '/uliana-english.com/';
+      }
+    }
+  </script>
+</head>
+<body>
+  <p>Если перенаправление не произошло автоматически, пожалуйста, перейдите на <a href="/uliana-english.com/">главную страницу</a>.</p>
+</body>
+</html>

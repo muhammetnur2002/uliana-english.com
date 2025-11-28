@@ -147,7 +147,7 @@ a:hover {
 /* ========================================================================= */
 .hero-section {
     /* Фоновое изображение (книги, карта, английский флаг) */
-    background: url('https://via.placeholder.com/1920x600/556B2F/F5F5DC?text=Фон+с+картой+и+книгами') no-repeat center center/cover;
+    background: url('books.jpg') no-repeat center center/cover;
     background-color: var(--color-dark-green);
     color: white;
     text-align: center;
@@ -305,7 +305,7 @@ a:hover {
 
 .service-card p {
     color: var(--color-text-secondary);
-    min-height: 60px;
+    min-height: 80px;
 }
 
 .detail-button {

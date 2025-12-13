@@ -49,7 +49,7 @@
 
     <section id="services" class="services-section">
         <div class="container">
-            <h2>Наши Курсы и Услуги</h2>
+            <h2>Мои Курсы и Услуги</h2>
             <p class="section-description">Индивидуальные программы, разработанные для достижения ваших целей.</p>
             <div class="services-grid">
                 <div class="service-card">
@@ -94,7 +94,7 @@
             </div>
             </div>
             <div class="certificate-info">
-                <h3>Подтвержденные сертификаты.</h3>
+                <h3></h3>
             </div>
         </div>
     </section>
@@ -105,12 +105,16 @@
             <p class="section-description">Истории успеха: от новичка до свободного владения.</p>
             <div class="cases-grid">
                 <div class="case-item">
-                    <h4>Иван С. | IELTS 7.5</h4>
-                    <p>Подготовка за 4 месяца. Поступил в университет в Лондоне. Фокус был на разделе Writing.</p>
+                    <h4>Денис | </h4>
+                    <p></p>
                 </div>
                 <div class="case-item">
-                    <h4>Мария К. | Повышение на работе</h4>
-                    <p>Перешла с уровня B1 на C1 для успешного прохождения собеседования в международной компании.</p>
+                    <h4>Валерия | Домашняя задания</h4>
+                    <p>Оперативно ответила, быстро сделала исполнинский объём работ! Да и просто человек очень приятный. Однозначно рекомендую! Буду всем советовать!</p>
+                </div>
+                <div class="case-item">
+                    <h4>Скульптуры и арт объекты | Домашняя задания</h4>
+                    <p>Спасибо большое Ульяна. Помогла с домашним заданием, оперативно и быстро.</p>
                 </div>
             </div>
             <a href="#reviews" class="cta-button more-cases">Посмотреть больше историй &rarr;</a>
@@ -122,12 +126,16 @@
             <h2>Отзывы Клиентов</h2>
             <div class="testimonials-slider">
                 <div class="testimonial-card">
-                    <p>"класс"</p>
-                    <span>— Ольга П. (Студент)</span>
+                    <p>Репетитор по английскому языку несмотря на юный возраст очень профессиональный подход, сильные и уверенные знания, отличная методика. обратился с целью устранить пробелы в грамматике после длительного отсутствия практики в использовании английского языка. мне понравился индивидуальный подход и гибкость, это позволяет уделить больше внимания в тех моментах, где возникают трудности, что дает мне время для хорошей проработки и ликвидации пробелов в грамматике. я доволен. считаю, что мне очень повезло, так как за эту цену сложно найти более компетентного преподавателя. всем рекомендую, как умного и очень ответственного репетитора. спасибо.</p>
+                    <span>— Денис (Студент)</span>
                 </div>
                 <div class="testimonial-card">
-                    <p>"Очень структурированная подача материала. Невероятно эффективные занятия по фонетике."</p>
-                    <span>— Михаил Л. (IT-специалист)</span>
+                    <p>"Оперативно ответила, быстро сделала исполнинский объём работ! Да и просто человек очень приятный. Однозначно рекомендую! Буду всем советоватью."</p>
+                    <span>— Валерия (IT-специалист)</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>Спасибо большое Ульяна. Помогла с домашним заданием, оперативно и быстро.</p>
+                    <span>— Скульптор и арт объекты.</span>
                 </div>
             </div>
 
@@ -187,14 +195,63 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script>
-    // Ждем, пока страница полностью загрузится
+    // --- 1. ЛОГИКА COOKIE-БАННЕРА ---
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const banner = document.getElementById('cookieBanner');
+        const acceptButton = document.getElementById('acceptCookies');
+        const cookieName = 'cookie_consent_neskuchny'; 
+
+        // Функции для работы с Cookie
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Основная логика: Проверка и отображение
+        if (getCookie(cookieName) === 'true') {
+            banner.style.display = 'none';
+        } else {
+            // Если cookie не найден, показываем баннер
+            banner.style.display = 'flex'; 
+        }
+
+        // Обработка нажатия кнопки
+        acceptButton.addEventListener('click', () => {
+            setCookie(cookieName, 'true', 365); // Устанавливаем cookie на 1 год
+            banner.style.display = 'none';
+        });
+    });
+
+    // --- 2. ЛОГИКА МАСКИ ТЕЛЕФОНА (Ваш код) ---
     $(document).ready(function(){
         // Находим поле по его ID (c-phone) и применяем маску
         $('#c-phone').mask('+7 (000) 000-00-00', {
-            // ЭТО ВАЖНО: заставляет курсор начинать ввод с первого доступного места (после +7)
             placeholder: '+7 (___) ___ __ __' 
         });
     });
 </script>
+<div class="cookie-banner" id="cookieBanner">
+    Мы используем файлы cookie для обеспечения функциональности и анализа трафика.
+    <a href="#">Узнать больше</a>
+    <button id="acceptCookies">Принять</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </body>
 </html>

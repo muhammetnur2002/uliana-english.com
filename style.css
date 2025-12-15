@@ -686,3 +686,49 @@ footer p {
         border-width: 3px;
     }
 }
+/* --- Cookies Баннер --- */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Темный полупрозрачный фон */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 0.9em;
+    z-index: 9999; /* Очень высокий z-index, чтобы всегда быть поверх всего */
+    
+    display: none; /* ПО УМОЛЧАНИЮ СКРЫТ! JS покажет, если нет cookie */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.cookie-banner a {
+    color: #ADFF2F; /* Яркий акцент для ссылки */
+    text-decoration: underline;
+}
+
+.cookie-banner button {
+    background-color: #808000; /* Оливковая кнопка (цвет из вашей палитры) */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    flex-shrink: 0; /* Чтобы кнопка не сжималась */
+}
+
+.cookie-banner button:hover {
+    background-color: #6B8E23;
+}
+
+/* Медиа-запрос для мобильных устройств, чтобы кнопки не сливались */
+@media (max-width: 600px) {
+    .cookie-banner {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
